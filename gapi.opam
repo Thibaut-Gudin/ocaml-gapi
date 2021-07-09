@@ -1,10 +1,10 @@
 opam-version: "2.0"
-version: "1.0"
+version: "2.0"
 maintainer:   "Thibaut Gudin <tgudin@besport.com>"
 authors:      "Thibaut Gudin <tgudin@besport.com>"
-homepage:     "https://github.com/Thibaut-Gudin/ocaml-gapi"
-bug-reports:  "https://github.com/Thibaut-Gudin/ocaml-gapi/issues"
-dev-repo:     "https://github.com/Thibaut-Gudin/ocaml-gapi"
+homepage:     "https://github.com/besport/ocaml-gapi"
+bug-reports:  "https://github.com/besport/ocaml-gapi/issues"
+dev-repo:     "https://github.com/besport/ocaml-gapi"
 license:      "LGPL-2.1 with OCaml linking exception"
 description: "Binding to the Google API client library plugin using gen_js_api"
 synopsis: "Binding to the Google API client library plugin using gen_js_api"
@@ -12,4 +12,5 @@ build: [[ "dune" "build" "-j" jobs "-p" name "@install" ]]
 depends: [
   "ocaml" { >= "4.08.0" }
   "gen_js_api"
+  "lwt_ppx" {>= "2.0.1" & < "2.1.0"}
   ]

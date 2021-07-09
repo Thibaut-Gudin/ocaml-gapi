@@ -1,12 +1,12 @@
 (rule
- (targets gapi.ml)
- (deps gapi.mli)
+ (targets base.ml)
+ (deps base.mli)
  (action (run %{bin:gen_js_api} %{deps})))
 
 (library
  (public_name gapi)
  (name gapi)
  (modes byte)
- (libraries gen_js_api)
-  ; (preprocess (pps gen_js_api))
+ (libraries gen_js_api lwt_ppx)
+ (preprocess (pps lwt_ppx))
 )
