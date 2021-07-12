@@ -1,3 +1,3 @@
-val load : client:string -> Ojs.t Lwt.t
+val load : client:string -> unit Lwt.t
 
-val then_ : Base.googleAuth -> (Ojs.t, Ojs.t) result Lwt.t
+val auth2_init : Base.client_config -> (Ojs.t, Ojs.t) result Lwt.t

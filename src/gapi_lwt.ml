@@ -1,13 +1,9 @@
-let load ~client =
-  let (promise, resolver) = Lwt.wait () in
-  let n_callback = function f -> Lwt.wakeup resolver f in
-  Base.load ~client ~callback:n_callback ;
-  promise
-
 let promise (f : _ -> unit) =
   let (promise, resolver) = Lwt.task () in
   f @@ Lwt.wakeup resolver ;
   promise
+
+let load ~client = promise @@ fun wakeup -> Base.load ~client ~callback:wakeup
 
 let then_ init =
   promise @@ fun wakeup ->
@@ -15,3 +11,7 @@ let then_ init =
     init
     ~onInit:(fun auth -> wakeup (Ok auth))
     ~onError:(fun msg -> wakeup (Error msg))
+
+let auth2_init config =
+  let init = Base.auth2_init config in
+  then_ init

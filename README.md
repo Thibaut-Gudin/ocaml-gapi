@@ -159,3 +159,39 @@ Gapi.then_ init
            ~onInit:(fun auth -> wakeup (Ok auth))
            ~onError:(fun msg -> wakeup (Error msg))
 ```
+
+## Module `Lwt`
+
+This module `Lwt` provide alternatives implementations of `Gapi`
+functions that return a "promise" of a result, under the forme of "_
+Lwt.t" objects.
+
+[Learn more about Lwt](https://ocsigen.org/lwt/latest/manual/manual)
+
+### `Gapi.Lwt.load`
+This version of the `load` function can't receive a *callback* argument,
+because it is used in order to "wakeup" a thread in a *wait* state.
+
+### `Gapi.Lwt.then_`
+This version of the `then_` function take only 1 argument of type
+`googleAuth`, the "onInit" and "onError" function are used in order to
+provide a promise of result.
+This function return an object `(Ok auth)` if the execution of `then_`
+works or an object `(Error msg)` if the execution of `then_` failed, you
+can use theses result in your programe to differenciate cas of failure
+or success.
+
+Example:
+```Ocaml
+let init = Gapi.auth2_init (Gapi.client_config ~client_id:"id" ()) in
+let%lwt auth = Gapi.Lwt.then_
+match auth with
+| Error msg ->
+  print_endline ("Failed with code error: " ^ msg)
+| Ok token -> (
+  [...]
+)
+```
+
+### `Gapi.Lwt.auth2_init_then_result`
+This function is a combination of `Gapi.auth2_init` and `Gapi.Lwt.then_`
