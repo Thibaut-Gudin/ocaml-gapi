@@ -1,4 +1,4 @@
-val load : client:string -> callback:(Ojs.t -> unit) -> unit
+val load : client:string -> callback:(unit -> unit) -> unit
   [@@js.global "gapi.load"]
 
 type ux_values = Popup [@js "popup"] | Redirect [@js "redirect"] [@@js.enum]
