@@ -58,7 +58,7 @@ See more details in [API documentation](https://github.com/google/google-api-jav
 ### `Gapi.auth2_init`
 
 > Initializes the GoogleAuth object. You must call this method before
-  calling gapi.auth2.GoogleAuth's methods (methodes that have a
+  calling gapi.auth2.GoogleAuth's methods (methods that have a
   `googleAuth` argument).
   When you initialize the GoogleAuth object, you configure the object
   with your OAuth 2.0 client ID and any additional options you want to
@@ -83,7 +83,7 @@ optional arguments:
       'openid' to the requested scopes when "true". It's basic value is
       "true" when unspecified
       ° `hosted_domain` -> string : Indicate the G Suite domain to which
-      usersmust belong to sign in. !!! You must request the 'email'
+      users must belong to sign in. !!! You must request the 'email'
       scope when using this parameter if "fetch_basi_profile" = false !!!
       ° `ux_mode` -> Gapi.ux_values : See the corresponding section above.
       ° `redirect_uri` -> string : This parameter is applied only if
@@ -126,7 +126,7 @@ msg -> wakeup (Error msg))
 
 ### `Gapi.getAuthResponse` type authResponse
 
-This type represents the reponse object returned from the user's auth
+This type represents the response object returned from the user's auth
 session, you can get the `authResponse` of a given user with the
 function `Gapi.getAuthResponse`:
 
@@ -134,7 +134,7 @@ function `Gapi.getAuthResponse`:
         Gapi.getAuthResponse : User_promise.user -> ?boolean -> unit
 ```
 The optional boolean argument "includeAuthorizationData" specifies
-        wheter to always return an access token and scopes. It default
+        whether to always return an access token and scopes or not. It default
         value is "true" and in this case the access token and requested
         scopes are not returned.
 
