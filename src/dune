@@ -7,6 +7,6 @@
  (public_name gapi)
  (name gapi)
  (modes byte)
- (libraries gen_js_api lwt_ppx)
+ (libraries gen_js_api)
  (preprocess (pps lwt_ppx))
 )
